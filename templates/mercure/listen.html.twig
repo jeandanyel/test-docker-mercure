@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercure</title>
+</head>
+<body>
+    <header>
+        <h1>Mercure</h1>
+    </header>
+    <main>
+        <p>Welcome to your website!</p>
+        <div id="mercure">
+        </div>
+    </main>
+    <footer>
+    </footer>
+    <script>
+        const eventSource = new EventSource("{{ mercure('https://example.com/books/1', { subscribe: 'https://example.com/books/1' })|escape('js') }}", {
+            withCredentials: true
+        });
+
+        const mercure = document.querySelector('#mercure');
+
+        eventSource.onmessage = event => {
+            const div = document.createElement('div');
+            const data = JSON.parse(event.data);
+
+            div.innerText = data.date;
+            
+            mercure.append(div);
+        }
+    </script>
+</body>
+</html>
