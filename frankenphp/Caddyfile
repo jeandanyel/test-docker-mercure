@@ -5,7 +5,7 @@
 		{$FRANKENPHP_CONFIG}
 	}
 
-	auto_https disable_redirects
+	auto_https off
 
 	# https://caddyserver.com/docs/caddyfile/directives#sorting-algorithm
 	order mercure after encode
