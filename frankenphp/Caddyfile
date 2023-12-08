@@ -5,6 +5,8 @@
 		{$FRANKENPHP_CONFIG}
 	}
 
+	auto_https disable_certs
+
 	# https://caddyserver.com/docs/caddyfile/directives#sorting-algorithm
 	order mercure after encode
 	order vulcain after reverse_proxy
