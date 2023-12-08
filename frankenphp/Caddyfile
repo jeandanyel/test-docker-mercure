@@ -5,6 +5,8 @@
 		{$FRANKENPHP_CONFIG}
 	}
 
+	auto_https disable_redirects
+
 	# https://caddyserver.com/docs/caddyfile/directives#sorting-algorithm
 	order mercure after encode
 	order vulcain after reverse_proxy
@@ -42,12 +44,6 @@
 		subscriptions
 		# Extra directives
 		{$MERCURE_EXTRA_DIRECTIVES}
-	}
-
-	php_fastcgi unix//var/run/php/php-fpm.sock {
-		# Allow x-forwarded-* headers to pass through
-		# https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#defaults
-		trusted_proxies private_ranges
 	}
 
 	vulcain
